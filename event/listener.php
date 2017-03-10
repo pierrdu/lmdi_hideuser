@@ -22,17 +22,20 @@ class listener implements EventSubscriberInterface
 	protected $user;
 	protected $auth;
 	protected $request;
+	protected $db;
 
 
 	public function __construct(
 		\phpbb\user $user,
 		\phpbb\auth\auth $auth,
-		\phpbb\request\request $request
+		\phpbb\request\request $request,
+		\phpbb\db\driver\driver_interface $db
 		)
 	{
 		$this->user = $user;
 		$this->auth = $auth;
 		$this->request = $request;
+		$this->db = $db;
 	}
 
 
@@ -56,6 +59,7 @@ class listener implements EventSubscriberInterface
 		$event['lang_set_ext'] = $lang_set_ext;
 	}
 
+
 	/**
 	* Modify topics data before we display the viewforum page
 	*
@@ -69,10 +73,12 @@ class listener implements EventSubscriberInterface
 	*/
 	public function modify_topics_data ($event)
 	{
+		// var_dump ("Entrée dans modify_topics_data");
 		$fid = $this->request->variable ('f', 0);
 		$auto = $this->test_auth ($fid);
 		if (!$auto)
 		{
+			$user_list = $this->get_users();
 			$topic_list = $event['topic_list'];
 			$total_topic_count = $event['total_topic_count'];
 			$rowset = $event['rowset'];
@@ -84,7 +90,7 @@ class listener implements EventSubscriberInterface
 				$titre  = $row['topic_title'];
 				$numaut = $row['topic_poster'];
 				$auteur = $row['topic_first_poster_name'];
-				if ($numaut == 4198)
+				if (in_array ($numaut, $user_list))
 				{
 					unset ($rowset[$topic]);
 					unset ($topic_list[$i]);
@@ -121,10 +127,12 @@ class listener implements EventSubscriberInterface
 	*/
 	public function modify_post_data ($event)
 	{
+		// var_dump ("Entrée dans modify_post_data");
 		$fid = $this->request->variable ('f', 0);
 		$auto = $this->test_auth ($fid);
 		if (!$auto)
 		{
+			$user_list = $this->get_users();
 			$post_list = $event['post_list'];
 			$rowset = $event['rowset'];
 			$nb = count ($post_list);
@@ -135,7 +143,7 @@ class listener implements EventSubscriberInterface
 				$hide_post  = $row['hide_post'];
 				$numaut = $row['user_id'];
 				$auteur = $row['username'];
-				if ($numaut == 4198)
+				if (in_array ($numaut, $user_list))
 				{
 					$row['hide_post'] = true;
 					unset ($post_list[$i]);
@@ -144,6 +152,20 @@ class listener implements EventSubscriberInterface
 			}
 			$event['rowset'] = $rowset;
 		}
+	}
+
+
+	private function get_users ()
+	{
+		$sql = 'SELECT user_id FROM ' . USERS_TABLE . ' WHERE lmdi_hideuser = TRUE';
+		$result = $this->db->sql_query($sql);
+		$user_list = array ();
+		while ($row = $this->db->sql_fetchrow($result))
+		{
+			$user_list[] = (int) $row['user_id'];
+		}
+		$this->db->sql_freeresult($result);
+		return ($user_list);
 	}
 
 
