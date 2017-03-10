@@ -17,7 +17,6 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 $lang = array_merge($lang, array(
-	'HIDEUSER_MOD_MENU_NAME'			=> 'Masquage d’utilisateurs',
 	'ACP_HIDEUSER_TITLE'			=> 'Masquage d’utilisateurs',
 	'HIDEUSER_LEGEND'				=> 'Gestion du masquage',
 
@@ -28,7 +27,7 @@ $lang = array_merge($lang, array(
 	'HU_ACTIONS'					=> 'Actions',
 	'HU_NUMBER'					=> 'Numéro',
 	'HU_ADDUSER'					=> 'Ajouter un utilisateur',
-	'HU_ADDUSER_LEGEND'				=> 'Addition d’un utilisateur',
+	'HU_ADDUSER_LEGEND'				=> 'Addition d’un nouvel utilisateur',
 	'HU_EDITUSER_LEGEND'			=> 'Édition d’un utilisateur',
 	'HU_ENTER_USER'				=> 'Saisissez le nom d’utilisateur',
 	'HU_SEARCH_USER'				=> 'Rechercher un utilisateur',

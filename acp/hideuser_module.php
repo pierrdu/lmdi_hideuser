@@ -52,7 +52,7 @@ class hideuser_module {
 					'S_EDIT_PAGE'		=> true,
 					'HU_LEGEND'		=> $user->lang('HU_ADDUSER_LEGEND'),
 					'U_HU_ADDUSER'		=> $this->u_action . '&amp;action=submituser',
-					'U_SEARCH_USER'	=> append_sid ("./../memberlist.php?mode=searchuser&amp;form=select_user&amp;field=username&amp;select_single=true"), 
+					'U_SEARCH_USER'	=> append_sid ("./../memberlist.php?mode=searchuser&amp;form=select_user&amp;field=username&amp;select_single=true"),
 					));
 			break;
 			/*

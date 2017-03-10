@@ -25,7 +25,7 @@ class migration_1 extends \phpbb\db\migration\migration
 		return array('\phpbb\db\migration\data\v310\alpha2');
 	}
 
-		public function update_schema()
+	public function update_schema()
 	{
 		return array(
 			'add_columns'	=> array(

@@ -3,7 +3,7 @@
  *
  * @package	Extension hideuser [English]
  * @author	Pierre Duhem <pierre@duhem.com>
- * (c) 2016-2017 - LMDI Pierre duhem
+ * (c) 2017 - LMDI Pierre duhem
  *
  **/
 
@@ -18,14 +18,20 @@ if (empty($lang) || !is_array($lang))
 }
 $lang = array_merge($lang, array(
 
-	'AUTOLINK_MOD_MENU_NAME'			=> 'Extension hideuser',
-	'ACP_hideuser_TITLE'			=> 'Alphabetical sort of topics',
-	'hideuser_LEGEND3'				=> 'Selection of forums with topic sorting',
-	'hideuser_NOSHOW_LIST'			=> 'Enable sort',
+	'ACP_HIDEUSER_TITLE'			=> 'User hide',
+	'HIDEUSER_LEGEND'				=> 'Management of hidden users',
 
-	'ACP_hideuser_CONFIG'			=> 'Extension configuration',
-	'hideuser' 					=> 'Sort topics',
-	'ALL_TOPICS' 					=> 'No sorting',
-	'LOG_hideuser_CONFIG_UPDATED'	=> 'The configuration was successfully updated.',
+	'ACP_HIDEUSER_CONFIG'			=> 'Extension configuration',
+	'HIDEUSER' 					=> 'User hide',
+	'HIDEUSER_CONFIG_UPDATED'		=> 'The configuration was successfully updated.',
+	'HU_USERS'					=> 'User',
+	'HU_ACTIONS'					=> 'Actions',
+	'HU_NUMBER'					=> 'Id',
+	'HU_ADDUSER'					=> 'Add an user',
+	'HU_ADDUSER_LEGEND'				=> 'Hiding of a new user',
+	'HU_EDITUSER_LEGEND'			=> 'Edition of an user',
+	'HU_ENTER_USER'				=> 'Type the user name',
+	'HU_SEARCH_USER'				=> 'Search for an user',
+
 	)
 );
