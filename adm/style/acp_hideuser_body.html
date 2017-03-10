@@ -1,0 +1,77 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<h1>{L_ACP_HIDEUSER_TITLE}</h1>
+
+
+<!-- IF S_CONFIG_PAGE -->
+<p>{L_HIDEUSER_LEGEND}</p>
+<form id="acp_hideuser" method="post" action="{F_ACTION}">
+	<fieldset>
+	<table class="table1 zebra-table hideuser">
+		<thead>
+			<tr>
+				<th>{L_HU_USERS}</th>
+				<th>{L_HU_NUMBER}</th>
+				<th width="20%" style="white-space: nowrap; text-align: center;">{L_HU_ACTIONS}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN users -->
+			<!-- IF al.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
+				<td>{users.NAME}</td>
+				<td>{users.ID}</td>
+				<td class="actions" style="text-align: center;">
+				<a href="{users.U_EDIT}">{ICON_EDIT}</a>
+				<a href="{users.U_DELETE}">{ICON_DELETE}</a>
+				</td>
+			</tr>
+			<!-- END users -->
+		</tbody>
+	</table>
+	<p class="quick">
+	<!-- IF not S_DISABLE_PP -->
+		<a class="button2" href="{U_HU_ADDUSER}">{L_HU_ADDUSER}</a>
+	<!-- ENDIF -->
+	</p>
+	</fieldset>
+	{S_FORM_TOKEN}
+</form>
+<!-- ENDIF -->
+
+<!-- IF S_EDIT_PAGE -->
+<p>{HU_LEGEND}</p>
+	<form id="select_user" method="post" action="{U_HU_ADDUSER}">
+
+	<fieldset>
+	<dl>
+		<dt><label for="username">{L_HU_ENTER_USER}{L_COLON}</label></dt>
+		<dd><input class="text medium" type="text" id="username" name="username" /></dd>
+		<dd>[ <a href="{U_SEARCH_USER}" onclick="find_username(this.href); return false;">{L_HU_SEARCH_USER}</a> ]</dd>
+	</dl>
+
+	<p class="quick">
+		<input type="submit" name="submituser" value="{L_SUBMIT}" class="button1" />
+	</p>
+	</fieldset>
+	{S_FORM_TOKEN}
+	</form>
+
+<!-- ENDIF -->
+
+<script type="text/javascript">
+// <![CDATA[
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+// ]]>
+</script>
+
+<!-- INCLUDE overall_footer.html -->
+

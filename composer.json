@@ -1,0 +1,30 @@
+{
+	"name": "lmdi/hideuser",
+	"type": "phpbb-extension",
+	"description": "Uder hiding extension for phpBB 3.1.x/3.2.x",
+	"homepage": "http://www.insecte.org/ext/readme.txt",
+	"version": "1.0.0",
+	"time": "2017-03-09",
+	"license": "GPL-2.0",
+	"authors": 
+	[	
+		{
+			"name": "Pierre Duhem",
+			"email": "pierre@duhem.com",
+			"homepage": "http://www.insecte.org/ext/readme.txt",
+			"role": "Developer of Alphasort extension"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"require-dev": {
+		"phpbb/epv": "dev-master"
+	},
+	"extra": {
+		"display-name": "LMDI Hide User",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.0-RC2,<3.3.0@dev"
+		}
+	}
+}

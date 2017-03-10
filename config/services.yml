@@ -1,0 +1,9 @@
+services:
+     lmdi.hideuser.listener:
+        class: lmdi\hideuser\event\listener
+        arguments:
+            - '@user'
+            - '@auth'
+            - '@request'
+        tags:
+            - { name: event.listener }
